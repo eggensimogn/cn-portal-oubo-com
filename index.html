@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欧博体育 · 简明指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f6f8;
+            color: #1e2024;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ── 深色头图 ── */
+        .hero {
+            background: linear-gradient(145deg, #0b0e14 0%, #1b222d 100%);
+            color: #ecedee;
+            padding: 3.2rem 1.5rem 2.8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(230, 180, 60, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .tagline {
+            max-width: 540px;
+            margin: 0 auto;
+            font-size: 0.95rem;
+            color: #abb2bf;
+            line-height: 1.5;
+        }
+
+        /* ── 正文浅色区 ── */
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2.8rem 1.5rem 3.5rem;
+            flex: 1;
+        }
+
+        .lead {
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            color: #2c3038;
+        }
+
+        .lead strong {
+            color: #1e2024;
+            font-weight: 600;
+        }
+
+        /* 特点卡片列 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin: 2.2rem 0 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.2rem 1.2rem 1.2rem 1.5rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03), 0 6px 16px rgba(0,0,0,0.04);
+            border-left: 4px solid #b08633;
+            transition: box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 12px 24px rgba(0,0,0,0.05);
+        }
+
+        .feature-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e2024;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: #4a4f5a;
+            margin: 0;
+        }
+
+        .note-block {
+            background: #f0f1f4;
+            border-radius: 12px;
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0 1.8rem;
+            border: 1px solid #e3e5ea;
+        }
+
+        .note-block p {
+            margin-bottom: 0.6rem;
+            font-size: 0.96rem;
+        }
+
+        .note-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .accent-link {
+            color: #b3862e;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .accent-link:hover {
+            border-bottom-color: #b3862e;
+        }
+
+        .faq-mini {
+            margin-top: 2.4rem;
+            border-top: 1px solid #dfe1e6;
+            padding-top: 1.6rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #2e323a;
+            padding: 0.2rem 0;
+        }
+
+        .faq-mini details p {
+            color: #4a4f5a;
+            margin: 0.4rem 0 0.6rem 0.8rem;
+        }
+
+        .closing {
+            margin-top: 2.6rem;
+            font-size: 0.95rem;
+            color: #3d424b;
+            padding: 1rem 0 0.2rem;
+            border-top: 1px solid #dfe1e6;
+        }
+
+        .closing a {
+            color: #b3862e;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .closing a:hover {
+            border-bottom-color: #b3862e;
+        }
+
+        /* ── 响应式 ── */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero {
+                padding: 2.4rem 1rem 2rem;
+            }
+            .content {
+                padding: 1.8rem 1rem 2.5rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .note-block {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .lead {
+                font-size: 1.1rem;
+            }
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 1.2rem 1.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #7a7f89;
+            background: #eceef2;
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>欧博体育 · 简明访问指引</h1>
+    <p class="tagline">从信息整理到直观体验——用更轻量的方式了解体育资讯平台。</p>
+</section>
+
+<main class="content">
+
+    <p class="lead">
+        对于经常关注体育动态的用户来说，找到一个信息组织清晰、更新节奏稳定的平台并不容易。<strong>欧博体育</strong> 在内容呈现上做了不少减法：去掉了过度装饰的模块，把重点放回赛事进展、队伍分析和数据回溯。下面的几点梳理，可以帮助你在初次接触时更快找到节奏。
+    </p>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>赛事分层</h3>
+            <p>热门联赛、杯赛与区域性赛事分列明晰，减少信息过载。每个赛事下方附有简洁赛程。</p>
+        </div>
+        <div class="feature-card">
+            <h3>数据快照</h3>
+            <p>关键统计项（控球率、射门、犯规等）以卡片形式集中展示，适合快速比对。</p>
+        </div>
+        <div class="feature-card">
+            <h3>深度阅读</h3>
+            <p>赛前简报与赛后复盘单独归档，与即时比分互不干扰，方便回看。</p>
+        </div>
+        <div class="feature-card">
+            <h3>多端适应</h3>
+            <p>移动端与桌面端布局各自优化，菜单与筛选器在窄屏下自动折叠。</p>
+        </div>
+    </div>
+
+    <div class="note-block">
+        <p><strong>🔍 访问前提醒</strong> – 建议使用最新版 Chrome、Safari 或 Firefox 浏览器以获得完整排版支持。平台未使用第三方广告弹窗，所有跳转均指向站内页面或经过核验的外部来源。</p>
+        <p>如果你偏好更简洁的信息流，可在页面右上角切换“紧凑视图”，该模式下隐藏赛事 banner 及推荐卡片，仅保留赛程列表与数据表格。</p>
+    </div>
+
+    <!-- 关键链接自然嵌入 -->
+    <p style="margin-bottom: 0.8rem;">
+        整体而言，<a class="accent-link" href="https://cn-portal-oubo.com">欧博体育</a> 在资讯密度与阅读效率之间取得了不错的平衡。无论你是想快速查看今晚的欧冠对阵，还是回顾某支球队近五场的射门转化率，都能在三个点击以内抵达目标页面。
+    </p>
+
+    <div class="faq-mini">
+        <details>
+            <summary>是否需要注册才能浏览？</summary>
+            <p>无需注册即可浏览赛程、积分榜、球队数据及大部分新闻。部分深度数据报表（如球员热区、战术板）需要免费登录后查看。</p>
+        </details>
+        <details>
+            <summary>数据更新频率如何？</summary>
+            <p>实时比分延迟约 45–60 秒，赛后技术统计在比赛结束后 15 分钟内更新。每日早间会发布前一日赛事汇总。</p>
+        </details>
+        <details>
+            <summary>是否支持 RSS 或通知？</summary>
+            <p>支持 RSS 订阅主要分类（足球、篮球、网球）。浏览器推送通知仅在你主动授权后生效，且可自定义关注球队。</p>
+        </details>
+    </div>
+
+    <div class="closing">
+        <p>从入门到日常使用，<a href="https://cn-portal-oubo.com">欧博体育</a> 没有复杂的学习曲线。保持浏览器的更新、了解模块筛选逻辑，就能顺畅地跟踪你关心的赛事。未来平台也会继续优化国际赛事覆盖与历史数据查询效率。</p>
+    </div>
+
+</main>
+
+<footer>
+    欧博体育 · 信息页面 · 简洁指南
+</footer>
+
+</body>
+</html>
